@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { PureComponent } from 'react';
 import './App.css';
+import IconsList from "./IconsList";
 
-const App = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface State {
+  showIcons: boolean
+}
+
+class App extends PureComponent<{}, State> {
+  state: State = {
+    showIcons: false,
+  };
+
+  _t: any = null;
+
+  componentDidMount() {
+    // simulating delays for some API requests
+    this._t = setTimeout(
+      () => {
+        this.setState({ showIcons: true });
+      },
+      500
+    );
+  }
+
+  componentWillUnmount() {
+    if (this._t) {
+      clearTimeout(this._t);
+    }
+  }
+
+  render() {
+    const {showIcons} = this.state;
+
+    return (
+      <div>
+        Do you see an icon here inside square brackets?
+        <br/>
+        {showIcons ? <IconsList/> : <>waiting...</>}
+        <br/>
+        Check, will you see it again when request to <code>icons.*.svg</code> get 304 response.
+      </div>
+    );
+  }
 }
 
 export default App;
