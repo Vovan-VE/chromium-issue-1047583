@@ -1,11 +1,22 @@
 body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  display: inline-block;
+  padding: 2px;
+  width: 44px;
+  height: 44px;
+  border: #c00 dotted 2px;
 }

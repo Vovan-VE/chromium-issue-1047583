@@ -1,12 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import 'react-app-polyfill/stable';
+import App from './app/App';
+import renderApp from './app/renderApp';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+renderApp(App);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+module.hot?.accept('./app', () => {
+  const NextApp = require('./app/App').default;
+  renderApp(NextApp);
+});
