@@ -6,3 +6,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 $ npm install
 $ npm start
 ```
+
+![Issue example](./chromium-issue-1047583.gif)
